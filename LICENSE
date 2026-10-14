@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 Lomenot
+Copyright (c) 2026 ShiinaRuri
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,24 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+## Third-party notices / 第三方声明
+
+本项目的协议实现参考并移植自以下项目（MIT 许可）：
+
+- **dsh-our-free-model** — https://github.com/Ebony-Vinyl/dsh-our-free-model
+  Copyright (c) 2026 Ebony-Vinyl
+
+  Ported files (protocol logic, re-implemented in Python):
+  - `vendor/channel-pack/src/buddy.ts` → `codebuddy.py`（端点常量、凭据结构、JWT 解析）
+  - `vendor/channel-pack/src/buddy-oauth.ts` → `codebuddy.py`（external-link-v2 轮询登录）
+  - `vendor/channel-pack/src/buddy-adapter.ts` → `codebuddy.py`（/v2/chat/completions 调用与 SSE 解析）
+  - `vendor/channel-pack/src/product.ts` → `codebuddy.py`（产品配置：端点/UA/归属头）
+  - `vendor/channel-pack/src/openai-gateway/tencent-fingerprint.ts` → `codebuddy.py`（风控指纹改写表）
+
+Upstream is distributed under the MIT License; its copyright notice and
+permission notice are reproduced above as required.
+
+上游以 MIT 许可分发；按该许可要求，其版权声明与许可声明已在上方完整保留。

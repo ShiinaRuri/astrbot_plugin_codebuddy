@@ -1,0 +1,19 @@
+{
+  "local_port": {
+    "description": "本地 OpenAI 兼容网关端口（AstrBot 在容器内用 127.0.0.1 访问，无需监听外网）",
+    "type": "int",
+    "default": 8326,
+    "hint": "改动后重启插件生效"
+  },
+  "local_key": {
+    "description": "本地网关 API Key（留空则首次启动自动生成，可用 /cbkey 查看）",
+    "type": "string",
+    "secret": true,
+    "default": ""
+  },
+  "default_model": {
+    "description": "默认模型 id（留空则用模型列表第一个；可用 /cbmodels 查看）",
+    "type": "string",
+    "default": ""
+  }
+}

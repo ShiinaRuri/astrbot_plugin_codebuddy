@@ -1,0 +1,43 @@
+name: astrbot_plugin_codebuddy
+display_name: CodeBuddy 接入
+short_desc: 把腾讯 CodeBuddy 的模型接入 AstrBot，本地 OpenAI 兼容网关
+desc: |-
+  把腾讯 CodeBuddy（中国版）的模型接入 AstrBot，作为机器人的对话模型使用。
+
+  **功能特性**
+
+  - 逆向 CodeBuddy 官方客户端的私有协议，登录你自己的 CodeBuddy / 腾讯云账号即可使用，无需自行申请 API Key；
+  - 插件在 AstrBot 进程内启动一个本地 OpenAI 兼容网关（默认 `127.0.0.1:8326`），在 WebUI 用「OpenAI Compatible」提供商指向它即可，无需对外开放任何端口；
+  - 登录采用 external-link-v2 轮询方式，**服务器无需浏览器**：机器人会把登录链接发到聊天里，你在手机 / 电脑上打开完成登录，插件后台自动检测并推送结果；
+  - 自带 refresh_token 静默续期、模型列表缓存、以及针对上游内容级风控的 system 消息指纹改写；
+  - 凭据保存在 AstrBot 的 `data/plugin_data/` 目录（权限 0600），不上传任何数据。
+
+  **使用方法**
+
+  1. 在任意会话发送 `/cblogin`，按提示在浏览器完成登录；
+  2. 发送 `/cbmodels` 查看可用模型，`/cbkey` 获取本地网关地址与 Key；
+  3. WebUI →「模型提供商」→「对话」→ 新增「OpenAI Compatible」，填入 `/cbkey` 给出的 Base URL 与 Key，保存并获取模型；
+  4. 在「配置文件 → AI 配置 → 模型」把对话模型设为刚启用的 CodeBuddy 模型。
+
+  **指令列表**
+
+  | 指令 | 说明 |
+  | --- | --- |
+  | `/cblogin` | 发起登录，返回登录链接 |
+  | `/cbstatus` | 查看登录状态、模型数量、网关信息 |
+  | `/cbmodels` | 列出可用模型 |
+  | `/cbkey` | 显示本地网关 Base URL 与 Key |
+  | `/cblogout` | 注销当前账号 |
+
+  **注意事项**
+
+  本项目通过模拟官方客户端访问厂商私有接口，**非厂商官方 API**，使用受厂商服务条款约束；接口与风控策略可能随时变更。请仅用于个人学习研究，并自行承担账号相关风险。协议实现参考自 [dsh-our-free-model](https://github.com/Ebony-Vinyl/dsh-our-free-model)（MIT）。
+version: 1.0.0
+author: ShiinaRuri
+repo: https://github.com/ShiinaRuri/astrbot_plugin_codebuddy
+astrbot_version: ">=4.17.0"
+tags:
+  - llm
+  - ai
+  - openai
+  - provider
